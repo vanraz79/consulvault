@@ -17,8 +17,7 @@ vault:
     - ./etc/vault.server/config:/vault/config
     - ./etc/vault.server/data:/vault/data
     - ./etc/vault.server/logs:/vault/logs
-  cap_add:
-    - IPC_LOCK
   environment:
-    - VAULT_LOCAL_CONFIG={"disable_mlock": true, "backend":{"consul":{"address":"${LOCAL_IP}:9500","advertise_addr":"http://${LOCAL_IP}", "path":"vault/"}},"default_lease_ttl": "168h", "max_lease_ttl": "720h", "listener": {"tcp": {"address": "0.0.0.0:8200", "tls_disable": 1}}}
-  command: server -SKIPSET_CAP=1 
+    - SKIP_SETCAP=1
+    - VAULT_LOCAL_CONFIG={"disable_mlock":"true","backend":{"consul":{"address":"${LOCAL_IP}:9500","advertise_addr":"http://${LOCAL_IP}","path":"vault/"}},"default_lease_ttl":"168h","max_lease_ttl":"720h","listener":{"tcp":{"address":"0.0.0.0:8200","tls_disable":1}}}
+  command: server 

@@ -1,0 +1,1 @@
+{"disable_mlock":"true","backend":{"consul":{"address":"10.0.0.8:9500","advertise_addr":"http://10.0.0.8","path":"vault/"}},"default_lease_ttl":"168h","max_lease_ttl":"720h","listener":{"tcp":{"address":"0.0.0.0:8200","tls_disable":1}}}
